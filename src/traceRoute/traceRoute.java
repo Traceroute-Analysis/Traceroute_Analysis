@@ -47,6 +47,7 @@ public class traceRoute {
 		System.out.println(isReachable(ip));
 		BufferedReader in;
 
+		ArrayList<ArrayList<String>> listOLists = new ArrayList<ArrayList<String>>();
 		try {
 			Runtime r   =   Runtime.getRuntime();
 			Process p   =   r.exec("traceroute " + ip);
@@ -55,27 +56,33 @@ public class traceRoute {
 			String line;
 			if(p == null) System.out.println("could not connect");
 			while((line = in.readLine()) != null){
+				ArrayList<String> singleList = new ArrayList<String>();
 				System.out.println(line);
 				if(line.contains("* * *")) {
 					System.out.println("Hop = " + findHop(line));
+					singleList.add(findHop(line));
+					singleList.add(findName("- run out of time -"));
 					System.out.println("- run out of time -");
 				} else {
 					System.out.println("Hop = " + findHop(line));
 					System.out.println("IP = " + findIP(line));
 					System.out.println("Name = " + findName(line));
 					System.out.println("Average = " + findAverage(line));
+					singleList.add(findHop(line));
+					singleList.add(findName(line));
+					singleList.add(findIP(line));
+					singleList.add(findAverage(line));
 				}
 				System.out.println("------------");
-
-				//in.close();
+				listOLists.add(singleList);
 			}
-		} catch(IOException e){
+		} catch(IOException e) {
 			System.out.println(e.toString());
 		}
 	}
-	
-	public static int findHop(String line){
-		return Integer.parseInt(line.substring(0, 4).trim());
+
+	public static String findHop(String line){
+		return line.substring(0, 4).trim();
 	}
 
 	public static String findName(String line){
@@ -86,7 +93,7 @@ public class traceRoute {
 			indexOfParenthesis = reverseLine.indexOf("(");
 			name = reverseLine.substring(indexOfParenthesis + 1, indexOfSpace);
 		}
-		
+
 		name =  reverse(name);
 		int xxx = 0;
 		xxx = name.substring(3).indexOf(" ");
@@ -99,7 +106,7 @@ public class traceRoute {
 		}
 		return name.trim();
 	}
-	
+
 	public static String reverse(String line){
 		String reverse = "";
 		for(int i = line.length() - 1; i >= 0; i--) reverse = reverse + line.charAt(i);
@@ -115,7 +122,7 @@ public class traceRoute {
 		} else return "";
 	}
 
-	public static double findAverage(String line) {
+	public static String findAverage(String line) {
 		int indexOfMs, from = 0;
 		double x = 0, y = 0, z = 0;
 		for(int i = 1 ; i <= 3 ; i++){
@@ -130,7 +137,7 @@ public class traceRoute {
 			}
 			else System.out.println("no");
 		}
-		return calAverage(x, y, z);
+		return calAverage(x, y, z) + "";
 	}
 
 	public static boolean isStar(String input) {
