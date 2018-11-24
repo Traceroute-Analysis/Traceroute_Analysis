@@ -1,23 +1,16 @@
 package traceRoute;
 import org.apache.commons.lang3.SystemUtils;
 
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
-import java.util.Timer;
 
-import java.io.*;
 import java.net.*;
-import java.lang.*;
 
 
 public class traceRoute {
-	
-	
 	
 //	Ping
 	/**
@@ -69,15 +62,6 @@ public class traceRoute {
 
         return command;
     }
-//    
-//    public static void main(String[] arg) throws IOException {
-//    	String ip = "127.0.0.0";
-//    	Timer t = new Timer();
-//    	InetAddress inet = InetAddress.getByName(ip);
-//       	System.out.println(isReachable(ip));
-//    	System.out.println(inet.isLoopbackAddress()+" "+inet.isAnyLocalAddress());
-//    }
-	
 	
 	public static void main(String args[]) throws IOException{
 		String ip = "157.240.24.35";
@@ -88,19 +72,17 @@ public class traceRoute {
 
 	        try{
 	            Runtime r   =   Runtime.getRuntime();
-	            Process p   =   r.exec("traceroute "+ip);
+	            Process p   =   r.exec("traceroute " + ip);
 
 	            in  =   new BufferedReader(new InputStreamReader(p.getInputStream()));
 
 	            String line;
-
-	            if(p==null)
+	            if(p == null)
 	                System.out.println("could not connect");
 
-	            while((line=in.readLine())!=null){
-
+	            while((line = in.readLine()) != null){
 	                System.out.println(line);
-
+	                System.out.println("average = " + findAverage(line));
 	                //in.close();
 	            }
 
@@ -110,5 +92,45 @@ public class traceRoute {
 
 	        }
 
+	}
+	
+	public static double findAverage(String line)  {
+		int indexOfMs, from = 0;
+		double x = 0, y = 0, z = 0;
+    	for(int i = 1 ; i <= 3 ; i++){
+    		if(line.substring(from).contains("ms")){
+            	indexOfMs = line.substring(from).indexOf("ms") + from;
+            	System.out.println(line.substring(indexOfMs-7, indexOfMs-1));
+            	if(i == 1 && isStar(line.substring(indexOfMs-7, indexOfMs-1))) x = 0;
+            	else if(i == 1) x = Double.parseDouble( line.substring(indexOfMs-7, indexOfMs-1) );
+
+            	else if(i == 2 && isStar(line.substring(indexOfMs-7, indexOfMs-1))) y = 0; 
+            	else if(i == 2) y = Double.parseDouble( line.substring(indexOfMs-7, indexOfMs-1) ); 
+
+            	else if(i == 3 && isStar(line.substring(indexOfMs-7, indexOfMs-1))) z = 0; 
+            	else if(i == 3) z = Double.parseDouble( line.substring(indexOfMs-7, indexOfMs-1) );
+            	 
+            	from = indexOfMs + 1;
+            }
+            else System.out.println("no");
+    	}
+    	
+    	return calAverage(x, y, z);
+	}
+	
+	public static boolean isStar(String input){
+		if(input == "*") return true;
+		else return false;
+	}
+	
+	public static double calAverage(double x, double y, double z){
+		if(x != 0 && y != 0 && z != 0) return (x + y + z) / 3;
+		else if(x != 0 && y != 0 && z == 0) return (x + y + z) / 2;
+		else if(x != 0 && y == 0 && z != 0) return (x + y + z) / 2;
+		else if(x == 0 && y != 0 && z != 0) return (x + y + z) / 2;
+		else if(x != 0 && y == 0 && z == 0) return (x + y + z);
+		else if(x == 0 && y != 0 && z == 0) return (x + y + z);
+		else if(x == 0 && y == 0 && z != 0) return (x + y + z);
+		else return 0;
 	}
 }
