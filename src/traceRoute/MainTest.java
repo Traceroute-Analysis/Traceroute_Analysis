@@ -1,14 +1,10 @@
 package traceRoute;
 
-import java.net.URL;
-
 import javafx.application.Application;
-import javafx.application.Platform;
+import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.layout.BorderPane;
-import javafx.fxml.FXMLLoader;
 
 public class MainTest extends Application {
 	@Override
@@ -29,3 +25,6 @@ public class MainTest extends Application {
 		launch(args);
 	}
 }
+
+
+
