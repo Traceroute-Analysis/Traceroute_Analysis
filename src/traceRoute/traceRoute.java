@@ -41,7 +41,7 @@ public class traceRoute {
 	}
 
 	public static void main(String args[]) throws IOException {
-		String ip = "157.240.24.35";
+		String ip = "facebook.com";
 
 		InetAddress inet = InetAddress.getByName(ip);
 		System.out.println(isReachable(ip));
@@ -61,7 +61,7 @@ public class traceRoute {
 				if(line.contains("* * *")) {
 					System.out.println("Hop = " + findHop(line));
 					singleList.add(findHop(line));
-					singleList.add(findName("- run out of time -"));
+					singleList.add("- run out of time -");
 					System.out.println("- run out of time -");
 				} else {
 					System.out.println("Hop = " + findHop(line));
@@ -128,14 +128,14 @@ public class traceRoute {
 		for(int i = 1 ; i <= 3 ; i++){
 			if(line.substring(from).contains("ms")){
 				indexOfMs = line.substring(from).indexOf("ms") + from;
-				System.out.println(line.substring(indexOfMs-7, indexOfMs-1));
+//				System.out.println(line.substring(indexOfMs-7, indexOfMs-1));
 
 				if(i == 1) x = Double.parseDouble( line.substring(indexOfMs-7, indexOfMs-1) );
 				else if(i == 2) y = Double.parseDouble( line.substring(indexOfMs-7, indexOfMs-1) ); 
 				else if(i == 3) z = Double.parseDouble( line.substring(indexOfMs-7, indexOfMs-1) );
 				from = indexOfMs + 1;
 			}
-			else System.out.println("no");
+//			else System.out.println("no");
 		}
 		return calAverage(x, y, z) + "";
 	}
