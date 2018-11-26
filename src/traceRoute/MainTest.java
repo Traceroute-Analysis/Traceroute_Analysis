@@ -26,6 +26,3 @@ public class MainTest extends Application {
 
 	}
 }
-
-
-

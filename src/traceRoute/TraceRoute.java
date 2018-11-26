@@ -63,6 +63,8 @@ public class TraceRoute {
 					System.out.println("Hop = " + findHop(line));
 					singleList.add(findHop(line));
 					singleList.add("- run out of time -");
+					singleList.add("- run out of time -");
+					singleList.add("- run out of time -");
 					System.out.println("- run out of time -");
 				} else {
 					System.out.println("Hop = " + findHop(line));

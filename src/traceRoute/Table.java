@@ -25,7 +25,7 @@ public class Table {
 	public String getrIP() {
 		return rIP.get();
 	}
-
+	
 	public String getrName() {
 		return rName.get();
 	}
