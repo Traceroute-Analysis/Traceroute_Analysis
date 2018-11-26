@@ -101,6 +101,14 @@ public class Controller implements Initializable {
 
 	public void handleClearButton(ActionEvent event) {
 		textField.clear();
+		iHop.getItems().clear();
+		iIP.getItems().clear();
+		iName.getItems().clear();
+		iTime.getItems().clear();
+		iHop.getItems().add("Hop");
+		iIP.getItems().add("IP address");
+		iName.getItems().add("Name");
+		iTime.getItems().add("Avg.");
 		System.out.println("clear");
 	}
 
