@@ -1,5 +1,6 @@
 package traceRoute;
 import org.apache.commons.lang3.SystemUtils;
+import java.text.DecimalFormat;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -167,6 +168,7 @@ public class TraceRoute {
 
 	public static String findAverage(String line) {
 		int indexOfMs, from = 0;
+		DecimalFormat deFormat = new DecimalFormat(".##");
 		double x = 0, y = 0, z = 0;
 		for(int i = 1 ; i <= 3 ; i++){
 			if(line.substring(from).contains("ms")){
@@ -180,7 +182,7 @@ public class TraceRoute {
 			}
 //			else System.out.println("no");
 		}
-		return calAverage(x, y, z) + "";
+		return deFormat.format(calAverage(x, y, z)) + "";
 	}
 
 	public static boolean isStar(String input) {

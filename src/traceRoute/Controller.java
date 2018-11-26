@@ -3,13 +3,8 @@ package traceRoute;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
-import java.util.ListIterator;
 import java.util.ResourceBundle;
 
-import javafx.beans.InvalidationListener;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -17,10 +12,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.ScrollBar;
 import javafx.scene.control.TextField;
-import javafx.scene.control.cell.PropertyValueFactory;
 
 public class Controller implements Initializable {
 
@@ -39,6 +32,10 @@ public class Controller implements Initializable {
 	@FXML
 	Button clearButton;
 
+	@FXML
+	ScrollBar scrollBarOne;
+	ScrollBar scrollBarTwo;
+
 	private int hop = 3;
 	private String ip = "102.11.1.1";
 	private String name = "www.google.com";
@@ -49,7 +46,6 @@ public class Controller implements Initializable {
 	ObservableList timeList = FXCollections.observableArrayList();
 	ArrayList<ArrayList<String>> listOLists = new ArrayList<ArrayList<String>>();
 
-
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		loadData();
@@ -57,44 +53,49 @@ public class Controller implements Initializable {
 		IPList.removeAll(IPList);
 		nameList.removeAll(nameList);
 		timeList.removeAll(timeList);
+
+//		scrollBarOne = (ScrollBar) iHop.lookup(".scroll-bar:vertical");
+//		scrollBarTwo = (ScrollBar) iIP.lookup(".scroll-bar:vertical");
+//
+//		scrollBarOne.valueProperty().bindBidirectional(scrollBarTwo.valueProperty());
 	}
-	
+
 	private void loadData() {
 		String a = "A";
 		String b = "B";
 		String c = "C";
 		String d = "D";
-		hopList.addAll(a,b,c,d);
+		hopList.addAll(a, b, c, d);
 		iHop.getItems().add("Hop");
 		iIP.getItems().add("IP address");
 		iName.getItems().add("Name");
 		iTime.getItems().add("Avg.");
-//		iHop.getItems().addAll(hopList);
-//		iIP.getItems().addAll(hopList);
-//		iName.getItems().addAll(hopList);
-//		iTime.getItems().addAll(hopList);
-		
+		// iHop.getItems().addAll(hopList);
+		// iIP.getItems().addAll(hopList);
+		// iName.getItems().addAll(hopList);
+		// iTime.getItems().addAll(hopList);
+
 	}
 
 	public void handleStartButton(ActionEvent event) throws IOException {
 		String input = textField.getText().trim();
-		System.out.println("start: "+input);
+		System.out.println("start: " + input);
 		TraceRoute traceRoute = new TraceRoute();
-		if( input != null ) {
+		if (input != null) {
 			updateData(traceRoute.run(input));
 		}
 	}
-	
-	public void updateData(ArrayList<ArrayList<String>> bigList){
-		for(ArrayList<String> smallList : bigList){
-//			iHop.getItems().add(smallList.get(0));
-//			iIP.getItems().add(smallList.get(2));
-//			iName.getItems().add(smallList.get(1));
-//			iTime.getItems().add(smallList.get(3));
-			iName.getItems().addAll(smallList);
-//			for(String s : smallList){
-//				
-//			}
+
+	public void updateData(ArrayList<ArrayList<String>> bigList) {
+		for (ArrayList<String> smallList : bigList) {
+			iHop.getItems().add(smallList.get(0));
+			iIP.getItems().add(smallList.get(2));
+			iName.getItems().add(smallList.get(1));
+			iTime.getItems().add(smallList.get(3));
+			// iName.getItems().addAll(smallList);
+			// for(String s : smallList){
+			//
+			// }
 		}
 	}
 
