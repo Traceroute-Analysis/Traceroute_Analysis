@@ -9,12 +9,12 @@ import java.util.ResourceBundle;
 
 import javafx.beans.InvalidationListener;
 import javafx.collections.FXCollections;
-import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.ListView;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -23,15 +23,13 @@ import javafx.scene.control.cell.PropertyValueFactory;
 public class Controller implements Initializable {
 
 	@FXML
-	TableView<Table> tableID;
+	ListView<String> iHop;
 	@FXML
-	TableColumn<Table, Integer> iHop;
+	ListView<String> iIP;
 	@FXML
-	TableColumn<Table, String> iIP;
+	ListView<String> iName;
 	@FXML
-	TableColumn<Table, String> iName;
-	@FXML
-	TableColumn<Table, Double> iTime;
+	ListView<String> iTime;
 	@FXML
 	TextField textField;
 	@FXML
@@ -43,65 +41,55 @@ public class Controller implements Initializable {
 	private String ip = "102.11.1.1";
 	private String name = "www.google.com";
 	private double time = 34;
-
-	ObservableList<Table> data = FXCollections.observableArrayList();
+	ObservableList hopList = FXCollections.observableArrayList();
+	ObservableList IPList = FXCollections.observableArrayList();
+	ObservableList nameList = FXCollections.observableArrayList();
+	ObservableList timeList = FXCollections.observableArrayList();
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-//		iHop.setCellValueFactory(new PropertyValueFactory<Table, Integer>("rhop"));
-//		System.out.println("เข้า");
-//		iIP.setCellValueFactory(new PropertyValueFactory<Table, String>("riP"));
-//		iName.setCellValueFactory(new PropertyValueFactory<Table, String>("rName"));
-//		iTime.setCellValueFactory(new PropertyValueFactory<Table, Double>("rTime"));
-//
-//		tableID.setItems(getListItem());
-		initateCols();
 		loadData();
-
+		hopList.removeAll(hopList);
+		IPList.removeAll(IPList);
+		nameList.removeAll(nameList);
+		timeList.removeAll(timeList);
 	}
-
-	private void initateCols() {
-		iHop.setCellValueFactory(new PropertyValueFactory<Table, Integer>("rhop"));
-		iIP.setCellValueFactory(new PropertyValueFactory<Table, String>("riP"));
-		iName.setCellValueFactory(new PropertyValueFactory<Table, String>("rName"));
-		iTime.setCellValueFactory(new PropertyValueFactory<Table, Double>("rTime"));
-	}
-
+	
 	private void loadData() {
-		data.removeAll(data);
-		data.addAll(new Table(hop++,"102.11.1.1","www.google.com",34));
-		data.addAll(new Table(hop++,"102.11.1.1","www.google.com",34));
-		data.addAll(new Table(hop++,"102.11.1.1","www.google.com",34));
-		tableID.getItems().addAll(data);
+		String a = "A";
+		String b = "B";
+		String c = "C";
+		String d = "D";
+		hopList.addAll(a,b,c,d);
+		iHop.getItems().add("Hop");
+		iIP.getItems().add("IP address");
+		iName.getItems().add("Name");
+		iTime.getItems().add("Avg.");
+		iHop.getItems().addAll(hopList);
+		iIP.getItems().addAll(hopList);
+		iName.getItems().addAll(hopList);
+		iTime.getItems().addAll(hopList);
+		
 	}
-
-	public ObservableList<Table> getListItem(){
-		data.add(new Table(4,"ip","name",3));
-		data.add(new Table(hop,ip,name,time));
-		data.add(new Table(hop,ip,name,time));
-		data.add(new Table(hop,ip,name,time));
-		System.out.println(hop+" "+ip+" "+name+" "+time);
-		for(Table a: data) {
-			System.out.println(">"+a.getrIP());
-		}
-		return data;
-	}
-
-	public void addItemToList() {
-		data.add(new Table(hop,ip,name,time));
-	}
-
-	public void handleInputField() {
-		if( textField != null ) {
-
-		}
-	}
+	
+	
+	
+//	public void addItemToList() {
+//		data.add(new Table(hop,ip,name,time));
+//	}
+//	
+//	public void handleInputField() {
+//		if( textField != null ) {
+//			
+//		}
+//	}
+//	
 
 	public void handleStartButton(ActionEvent event) {
 		String input = textField.getText().trim();
 		System.out.println("start: "+input);
 		if( textField != null ) {
-			tableID.setItems(getListItem());
+			
 		}
 	}
 

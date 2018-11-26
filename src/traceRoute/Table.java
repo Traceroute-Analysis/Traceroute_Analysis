@@ -65,8 +65,5 @@ public class Table {
 //	public void setrTime(double rTime) {
 //		this.rTime.set(rTime);;
 //	}
-//	
-	
-	
-	
+//		
 }
