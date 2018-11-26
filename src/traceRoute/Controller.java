@@ -21,7 +21,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 public class Controller implements Initializable {
-	
+
 	@FXML
 	TableView<Table> tableID;
 	@FXML
@@ -38,28 +38,44 @@ public class Controller implements Initializable {
 	Button startButton;
 	@FXML
 	Button clearButton;
-	
+
 	private int hop = 3;
 	private String ip = "102.11.1.1";
 	private String name = "www.google.com";
 	private double time = 34;
-	
-	ObservableList<Table> data;
+
+	ObservableList<Table> data = FXCollections.observableArrayList();
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+//		iHop.setCellValueFactory(new PropertyValueFactory<Table, Integer>("rhop"));
+//		System.out.println("เข้า");
+//		iIP.setCellValueFactory(new PropertyValueFactory<Table, String>("riP"));
+//		iName.setCellValueFactory(new PropertyValueFactory<Table, String>("rName"));
+//		iTime.setCellValueFactory(new PropertyValueFactory<Table, Double>("rTime"));
+//
+//		tableID.setItems(getListItem());
+		initateCols();
+		loadData();
+
+	}
+
+	private void initateCols() {
 		iHop.setCellValueFactory(new PropertyValueFactory<Table, Integer>("rhop"));
-		System.out.println("เข้า");
 		iIP.setCellValueFactory(new PropertyValueFactory<Table, String>("riP"));
 		iName.setCellValueFactory(new PropertyValueFactory<Table, String>("rName"));
 		iTime.setCellValueFactory(new PropertyValueFactory<Table, Double>("rTime"));
-		
-		tableID.setItems(getListItem());
-		
 	}
-	
+
+	private void loadData() {
+		data.removeAll(data);
+		data.addAll(new Table(hop++,"102.11.1.1","www.google.com",34));
+		data.addAll(new Table(hop++,"102.11.1.1","www.google.com",34));
+		data.addAll(new Table(hop++,"102.11.1.1","www.google.com",34));
+		tableID.getItems().addAll(data);
+	}
+
 	public ObservableList<Table> getListItem(){
-		data = FXCollections.observableArrayList();
 		data.add(new Table(4,"ip","name",3));
 		data.add(new Table(hop,ip,name,time));
 		data.add(new Table(hop,ip,name,time));
@@ -70,17 +86,17 @@ public class Controller implements Initializable {
 		}
 		return data;
 	}
-	
+
 	public void addItemToList() {
 		data.add(new Table(hop,ip,name,time));
 	}
-	
+
 	public void handleInputField() {
 		if( textField != null ) {
-			
+
 		}
 	}
-	
+
 	public void handleStartButton(ActionEvent event) {
 		String input = textField.getText().trim();
 		System.out.println("start: "+input);
@@ -88,7 +104,7 @@ public class Controller implements Initializable {
 			tableID.setItems(getListItem());
 		}
 	}
-	
+
 	public void handleClearButton(ActionEvent event) {
 		textField.clear();
 		System.out.println("clear");
