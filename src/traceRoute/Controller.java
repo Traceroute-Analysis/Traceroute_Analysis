@@ -1,6 +1,8 @@
 package traceRoute;
 
+import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
@@ -45,6 +47,8 @@ public class Controller implements Initializable {
 	ObservableList IPList = FXCollections.observableArrayList();
 	ObservableList nameList = FXCollections.observableArrayList();
 	ObservableList timeList = FXCollections.observableArrayList();
+	ArrayList<ArrayList<String>> listOLists = new ArrayList<ArrayList<String>>();
+
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -65,31 +69,32 @@ public class Controller implements Initializable {
 		iIP.getItems().add("IP address");
 		iName.getItems().add("Name");
 		iTime.getItems().add("Avg.");
-		iHop.getItems().addAll(hopList);
-		iIP.getItems().addAll(hopList);
-		iName.getItems().addAll(hopList);
-		iTime.getItems().addAll(hopList);
+//		iHop.getItems().addAll(hopList);
+//		iIP.getItems().addAll(hopList);
+//		iName.getItems().addAll(hopList);
+//		iTime.getItems().addAll(hopList);
 		
 	}
-	
-	
-	
-//	public void addItemToList() {
-//		data.add(new Table(hop,ip,name,time));
-//	}
-//	
-//	public void handleInputField() {
-//		if( textField != null ) {
-//			
-//		}
-//	}
-//	
 
-	public void handleStartButton(ActionEvent event) {
+	public void handleStartButton(ActionEvent event) throws IOException {
 		String input = textField.getText().trim();
 		System.out.println("start: "+input);
-		if( textField != null ) {
-			
+		TraceRoute traceRoute = new TraceRoute();
+		if( input != null ) {
+			updateData(traceRoute.run(input));
+		}
+	}
+	
+	public void updateData(ArrayList<ArrayList<String>> bigList){
+		for(ArrayList<String> smallList : bigList){
+//			iHop.getItems().add(smallList.get(0));
+//			iIP.getItems().add(smallList.get(2));
+//			iName.getItems().add(smallList.get(1));
+//			iTime.getItems().add(smallList.get(3));
+			iName.getItems().addAll(smallList);
+//			for(String s : smallList){
+//				
+//			}
 		}
 	}
 
