@@ -13,22 +13,24 @@
 </TableColumn> -->
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="traceRoute.Controller">
+
    <children>
-      <ScrollPane layoutX="56.0" layoutY="119.0" prefHeight="486.0" prefWidth="681.0">
+      <ScrollPane layoutX="56.0" layoutY="119.0" prefHeight="500.0" prefWidth="806.0">
          <content>
-            <HBox prefHeight="484.0" prefWidth="675.0">
+            <HBox prefHeight="500.0" prefWidth="800.0">
                <children>
-                  <ListView fx:id="iHop" prefHeight="559.0" prefWidth="100.0" />
-                  <ListView fx:id="iIP" prefHeight="484.0" prefWidth="208.0" />
-                  <ListView fx:id="iName" prefHeight="484.0" prefWidth="224.0" />
-                  <ListView fx:id="iTime" prefHeight="484.0" prefWidth="138.0" />
+                  <ListView fx:id="iHop" prefHeight="500.0" prefWidth="97.0" />
+                  <ListView fx:id="iIP" prefHeight="500.0" prefWidth="223.0" />
+                  <ListView fx:id="iName" prefHeight="500.0" prefWidth="374.0" />
+                  <ListView fx:id="iTime" prefHeight="484.0" prefWidth="292.0" />
                </children>
             </HBox>
          </content>
       </ScrollPane>
-      <Label layoutX="24.0" layoutY="36.0" text="IP Address / URL" />
-      <TextField fx:id="textField" layoutX="142.0" layoutY="31.0" prefHeight="27.0" prefWidth="456.0" />
-      <Button fx:id="startButton" layoutX="620.0" layoutY="31.0" mnemonicParsing="false" onAction="#handleStartButton" prefWidth="65.0" style="-fx-background-color: #000;" text="Start" textFill="#f8f7f7" />
-      <Button fx:id="clearButton" layoutX="696.0" layoutY="31.0" mnemonicParsing="false" onAction="#handleClearButton" prefHeight="27.0" prefWidth="65.0" style="-fx-background-color: #000;" text="Clear" textFill="#fcf7f7" />
+
+      <Label layoutX="71.0" layoutY="37.0" text="IP Address / URL" />
+      <TextField fx:id="textField" layoutX="189.0" layoutY="32.0" onAction="#handleStartButton" prefHeight="27.0" prefWidth="456.0" />
+      <Button fx:id="startButton" layoutX="667.0" layoutY="32.0" mnemonicParsing="false" onAction="#handleStartButton" prefWidth="65.0" text="Start" />
+      <Button fx:id="clearButton" layoutX="743.0" layoutY="32.0" mnemonicParsing="false" onAction="#handleClearButton" prefHeight="27.0" prefWidth="65.0" text="Clear" />
    </children>
 </AnchorPane>
