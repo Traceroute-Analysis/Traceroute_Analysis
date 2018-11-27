@@ -12,7 +12,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
-import javafx.scene.control.ScrollBar;
 import javafx.scene.control.TextField;
 
 public class Controller implements Initializable {
@@ -32,9 +31,6 @@ public class Controller implements Initializable {
 	@FXML
 	Button clearButton;
 
-	@FXML
-	ScrollBar scrollBarOne;
-	ScrollBar scrollBarTwo;
 
 	private int hop = 3;
 	private String ip = "102.11.1.1";
@@ -53,19 +49,9 @@ public class Controller implements Initializable {
 		IPList.removeAll(IPList);
 		nameList.removeAll(nameList);
 		timeList.removeAll(timeList);
-
-//		scrollBarOne = (ScrollBar) iHop.lookup(".scroll-bar:vertical");
-//		scrollBarTwo = (ScrollBar) iIP.lookup(".scroll-bar:vertical");
-//
-//		scrollBarOne.valueProperty().bindBidirectional(scrollBarTwo.valueProperty());
 	}
 
 	private void loadData() {
-		String a = "A";
-		String b = "B";
-		String c = "C";
-		String d = "D";
-		hopList.addAll(a, b, c, d);
 		iHop.getItems().add("Hop");
 		iIP.getItems().add("IP address");
 		iName.getItems().add("Name");
@@ -109,6 +95,8 @@ public class Controller implements Initializable {
 		iIP.getItems().add("IP address");
 		iName.getItems().add("Name");
 		iTime.getItems().add("Avg.");
+		hopList.clear();
+//		IPList.removeAll(IPList);
 		System.out.println("clear");
 	}
 

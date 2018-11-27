@@ -9,7 +9,7 @@ import java.util.List;
 import java.net.*;
 
 public class TraceRoute {
-
+	
 	//	Ping
 	/**
 	 * @param ipAddress The internet protocol address to ping
@@ -58,6 +58,7 @@ public class TraceRoute {
 			if(p == null) System.out.println("could not connect");
 			while((line = in.readLine()) != null){
 				ArrayList<String> singleList = new ArrayList<String>();
+				
 				System.out.println(line);
 				if(line.contains("* * *")) {
 					System.out.println("Hop = " + findHop(line));
