@@ -66,7 +66,7 @@
           <CategoryAxis side="BOTTOM" />
         </xAxis>
         <yAxis>
-          <NumberAxis label="Time(ms)" side="LEFT" />
+          <NumberAxis label="Average RTT (ms)" side="LEFT" />
         </yAxis>
       </LineChart>
       <Label fx:id="ipLabel" layoutX="388.0" layoutY="415.0" prefHeight="18.0" prefWidth="235.0" text="Click a point for see an IP address">
