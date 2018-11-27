@@ -52,10 +52,9 @@ public class Controller implements Initializable {
 	ArrayList<ArrayList<String>> listOLists = new ArrayList<ArrayList<String>>();
 	XYChart.Series<String, Number> series = new XYChart.Series<String, Number>();
 	ArrayList<String> listOfIP = new ArrayList<>();
-	
+
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-//		loadData();
 		iHop.setMouseTransparent(true);
 		iHop.setFocusTraversable(false);
 		iIP.setMouseTransparent(true);
@@ -65,7 +64,7 @@ public class Controller implements Initializable {
 		iTime.setMouseTransparent(true);
 		iTime.setFocusTraversable(false);
 		scrollPane.setVbarPolicy(ScrollBarPolicy.NEVER);
-		
+
 	}
 
 	public void handleStartButton(ActionEvent event) throws IOException {
@@ -76,7 +75,7 @@ public class Controller implements Initializable {
 			updateData(traceRoute.run(input));
 			lineChart.getData().add(series);
 			series.setName(null);
-			
+
 			for ( XYChart.Data<String, Number> data : series.getData()) {
 				if(data.getXValue().equals("")) {
 					data.getNode().setVisible(false);
@@ -86,13 +85,13 @@ public class Controller implements Initializable {
 					public void handle(MouseEvent event) {
 						if(!data.getXValue().equals("")) {
 							int index = Integer.parseInt(data.getXValue()) - 1;
-//							System.out.println("|"+data.getXValue()+"|: "+listOfIP.get(index));
+							//							System.out.println("|"+data.getXValue()+"|: "+listOfIP.get(index));
 							if( data.getXValue().equals(" ")) {
-//								System.out.println("โหลลล");
-//							 ipLabel.setText(" ");
+								//								System.out.println("โหลลล");
+								//							 ipLabel.setText(" ");
 								ipLabel.setText("IP: " + listOfIP.get(index));
 							}else {
-//								System.out.println("เข้า");
+								//								System.out.println("เข้า");
 								ipLabel.setText("IP: " + listOfIP.get(index));
 								Tooltip.install(data.getNode(),
 										new Tooltip("IP:" + listOfIP.get(index)));
@@ -102,7 +101,7 @@ public class Controller implements Initializable {
 							ipLabel.setText("not define");
 						}
 					}
-					
+
 				});
 			}
 		}
@@ -113,30 +112,32 @@ public class Controller implements Initializable {
 		for (ArrayList<String> smallList : bigList) {
 			listOfIP.add(smallList.get(2));
 			i++;
-//			System.out.println(i+" Hop: " + smallList.get(0));
+			//			System.out.println(i+" Hop: " + smallList.get(0));
 			iHop.getItems().add(smallList.get(0));
 			iIP.getItems().add(smallList.get(2));
 			iName.getItems().add(smallList.get(1));
 			iTime.getItems().add(smallList.get(3));
 			if (smallList.get(3).contains("out")) {
-//				series.getData().add(new XYChart.Data<String, Number>(smallList.get(0), 0));
+				//				series.getData().add(new XYChart.Data<String, Number>(smallList.get(0), 0));
+
 				series.getData().add(new XYChart.Data<String, Number>(i+"", 0));
 			} else {
 				double time = Double.parseDouble(smallList.get(3));
-//				if(smallList.get(0).equals("")) {
-//					if( j == (i - 2)) {
-//						series.getData().add(new XYChart.Data<String, Number>((i-1)+"", time));
-//					}else {
-//						series.getData().add(new XYChart.Data<String, Number>((i-1)+"", time));
-//					}
-//					j = i - 1;
-//				}else {
-//					series.getData().add(new XYChart.Data<String, Number>(smallList.get(0), time));
-//					i = Integer.parseInt(smallList.get(0));
-//				}
+				//				if(smallList.get(0).equals("")) {
+				//					if( j == (i - 2)) {
+				//						series.getData().add(new XYChart.Data<String, Number>((i-1)+"", time));
+				//					}else {
+				//						series.getData().add(new XYChart.Data<String, Number>((i-1)+"", time));
+				//					}
+				//					j = i - 1;
+				//				}else {
+				//					series.getData().add(new XYChart.Data<String, Number>(smallList.get(0), time));
+				//					i = Integer.parseInt(smallList.get(0));
+				//				}
 				series.getData().add(new XYChart.Data<String, Number>(i+"", time));
+
 			}
-//			System.out.println(">>>"+series.getData().toString());
+			//			System.out.println(">>>"+series.getData().toString());
 		}
 
 	}
@@ -148,20 +149,12 @@ public class Controller implements Initializable {
 		iName.getItems().clear();
 		iTime.getItems().clear();
 		hopList.clear();
-//		series.getData().removeAll();
+		//		series.getData().removeAll();
 		series.getData().clear();
 		lineChart.getData().clear();
 		ipLabel.setText("");
 		// IPList.removeAll(IPList);
 		System.out.println("clear");
-//		loadData();
-	}
-	
-//	private void loadData() {
-// 		iHop.getItems().add("Hop");
-// 		iIP.getItems().add("IP address");
-// 		iName.getItems().add("Name");
-// 		iTime.getItems().add("Avg.");
-// 		}
 
+	}
 }
