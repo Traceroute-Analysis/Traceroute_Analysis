@@ -85,46 +85,46 @@ public class TraceRoute {
 		return listOLists;
 	}
 
-//	public static void main(String args[]) throws IOException {
-//		String ip = "facebook.com";
-//
-//		InetAddress inet = InetAddress.getByName(ip);
-//		System.out.println(isReachable(ip));
-//		BufferedReader in;
-//
-//		ArrayList<ArrayList<String>> listOLists = new ArrayList<ArrayList<String>>();
-//		try {
-//			Runtime r   =   Runtime.getRuntime();
-//			Process p   =   r.exec("traceroute " + ip);
-//
-//			in  =   new BufferedReader(new InputStreamReader(p.getInputStream()));
-//			String line;
-//			if(p == null) System.out.println("could not connect");
-//			while((line = in.readLine()) != null){
-//				ArrayList<String> singleList = new ArrayList<String>();
-//				System.out.println(line);
-//				if(line.contains("* * *")) {
-//					System.out.println("Hop = " + findHop(line));
-//					singleList.add(findHop(line));
-//					singleList.add("- run out of time -");
-//					System.out.println("- run out of time -");
-//				} else {
-//					System.out.println("Hop = " + findHop(line));
-//					System.out.println("IP = " + findIP(line));
-//					System.out.println("Name = " + findName(line));
-//					System.out.println("Average = " + findAverage(line));
-//					singleList.add(findHop(line));
-//					singleList.add(findName(line));
-//					singleList.add(findIP(line));
-//					singleList.add(findAverage(line));
-//				}
-//				System.out.println("------------");
-//				listOLists.add(singleList);
-//			}
-//		} catch(IOException e) {
-//			System.out.println(e.toString());
-//		}
-//	}
+	public static void main(String args[]) throws IOException {
+		String ip = "facebook.com";
+
+		InetAddress inet = InetAddress.getByName(ip);
+		System.out.println(isReachable(ip));
+		BufferedReader in;
+
+		ArrayList<ArrayList<String>> listOLists = new ArrayList<ArrayList<String>>();
+		try {
+			Runtime r   =   Runtime.getRuntime();
+			Process p   =   r.exec("traceroute " + ip);
+
+			in  =   new BufferedReader(new InputStreamReader(p.getInputStream()));
+			String line;
+			if(p == null) System.out.println("could not connect");
+			while((line = in.readLine()) != null){
+				ArrayList<String> singleList = new ArrayList<String>();
+				System.out.println(line);
+				if(line.contains("* * *")) {
+					System.out.println("Hop = " + findHop(line));
+					singleList.add(findHop(line));
+					singleList.add("- run out of time -");
+					System.out.println("- run out of time -");
+				} else {
+					System.out.println("Hop = " + findHop(line));
+					System.out.println("IP = " + findIP(line));
+					System.out.println("Name = " + findName(line));
+					System.out.println("Average = " + findAverage(line));
+					singleList.add(findHop(line));
+					singleList.add(findName(line));
+					singleList.add(findIP(line));
+					singleList.add(findAverage(line));
+				}
+				System.out.println("------------");
+				listOLists.add(singleList);
+			}
+		} catch(IOException e) {
+			System.out.println(e.toString());
+		}
+	}
 
 	public static String findHop(String line){
 		return line.substring(0, 4).trim();

@@ -52,10 +52,10 @@ public class Controller implements Initializable {
 	}
 
 	private void loadData() {
-		iHop.getItems().add("Hop");
-		iIP.getItems().add("IP address");
-		iName.getItems().add("Name");
-		iTime.getItems().add("Avg.");
+		iHop.getItems().add("HOP");
+		iIP.getItems().add("IP ADDRESS");
+		iName.getItems().add("NAME");
+		iTime.getItems().add("AVERAGE RTT (ms)");
 		// iHop.getItems().addAll(hopList);
 		// iIP.getItems().addAll(hopList);
 		// iName.getItems().addAll(hopList);
@@ -86,10 +86,10 @@ public class Controller implements Initializable {
 		iIP.getItems().clear();
 		iName.getItems().clear();
 		iTime.getItems().clear();
-		iHop.getItems().add("Hop");
-		iIP.getItems().add("IP address");
-		iName.getItems().add("Name");
-		iTime.getItems().add("Avg.");
+		iHop.getItems().add("HOP");
+		iIP.getItems().add("IP ADDRESS");
+		iName.getItems().add("NAME");
+		iTime.getItems().add("AVERAGE RTT (ms)");
 		hopList.clear();
 //		IPList.removeAll(IPList);
 		System.out.println("clear");
