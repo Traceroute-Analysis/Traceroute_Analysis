@@ -55,7 +55,6 @@ public class Controller implements Initializable {
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		loadData();
 		iHop.setMouseTransparent(true);
 		iHop.setFocusTraversable(false);
 		iIP.setMouseTransparent(true);
@@ -66,13 +65,6 @@ public class Controller implements Initializable {
 		iTime.setFocusTraversable(false);
 		scrollPane.setVbarPolicy(ScrollBarPolicy.NEVER);
 		
-	}
-
-	private void loadData() {
-		iHop.getItems().add("Hop");
-		iIP.getItems().add("IP address");
-		iName.getItems().add("Name");
-		iTime.getItems().add("Avg.");
 	}
 
 	public void handleStartButton(ActionEvent event) throws IOException {
@@ -152,10 +144,6 @@ public class Controller implements Initializable {
 		iIP.getItems().clear();
 		iName.getItems().clear();
 		iTime.getItems().clear();
-		iHop.getItems().add("HOP");
-		iIP.getItems().add("IP ADDRESS");
-		iName.getItems().add("NAME");
-		iTime.getItems().add("AVERAGE RTT (ms)");
 		hopList.clear();
 		series.getData().removeAll();
 		lineChart.getData().clear();
