@@ -29,14 +29,6 @@
 
       <ScrollPane fx:id="scrollPane" layoutX="32.0" layoutY="162.0" prefHeight="200.0" prefWidth="934.0">
          <content>
-            <!-- <HBox prefHeight="314.0" prefWidth="808.0">
-               <children>
-                  <ListView fx:id="iHop" prefHeight="350.0" prefWidth="100.0" style="-fx-padding: 0px;" />
-                  <ListView fx:id="iIP" prefHeight="350.0" prefWidth="223.0" />
-                  <ListView fx:id="iName" prefHeight="350.0" prefWidth="374.0" style="-fx-padding: 0px;" />
-                  <ListView fx:id="iTime" prefHeight="350.0" prefWidth="292.0" />
-               </children>
-            </HBox> -->
             <HBox prefHeight="500.0" prefWidth="915.0">
                 <children>
                    <ListView fx:id="iHop" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="97.0" />
