@@ -41,22 +41,22 @@ public class TraceRoute {
 		return command;
 	}
 	
-	public ArrayList<ArrayList<String>> run(String ip) throws IOException{
+	public ArrayList<ArrayList<String>> run(String input) throws IOException{
 //		String ip = "facebook.com";
 
-		InetAddress inet = InetAddress.getByName(ip);
-		System.out.println(isReachable(ip));
+		InetAddress inet = InetAddress.getByName(input);
+		System.out.println(isReachable(input));
 		BufferedReader in;
 
 		ArrayList<ArrayList<String>> listOLists = new ArrayList<ArrayList<String>>();
 		try {
 			Runtime r   =   Runtime.getRuntime();
-			Process p   =   r.exec("traceroute " + ip);
+			Process p   =   r.exec("traceroute " + input);
 
 			in  =   new BufferedReader(new InputStreamReader(p.getInputStream()));
 			String line;
 			if(p == null) System.out.println("could not connect");
-			while((line = in.readLine()) != null){
+			while((line = in.readLine()) != null) {
 				ArrayList<String> singleList = new ArrayList<String>();
 				System.out.println(line);
 				if(line.contains("* * *")) {
@@ -70,8 +70,7 @@ public class TraceRoute {
 					System.out.println("Hop = " + findHop(line));
 					System.out.println("IP = " + findIP(line));
 					System.out.println("Name = " + findName(line));
-					System.out.println("Average = " + findAverage(line));
-					singleList.add(findHop(line));
+					System.out.println("Average = " + findAverage(line));					singleList.add(findHop(line));
 					singleList.add(findName(line));
 					singleList.add(findIP(line));
 					singleList.add(findAverage(line));
@@ -81,8 +80,7 @@ public class TraceRoute {
 			}
 		} catch(IOException e) {
 			System.out.println(e.toString());
-		}
-		
+		}		
 		return listOLists;
 	}
 

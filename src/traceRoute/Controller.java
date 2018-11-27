@@ -61,11 +61,6 @@ public class Controller implements Initializable {
 	}
 
 	private void loadData() {
-		String a = "A";
-		String b = "B";
-		String c = "C";
-		String d = "D";
-		hopList.addAll(a, b, c, d);
 		iHop.getItems().add("Hop");
 		iIP.getItems().add("IP address");
 		iName.getItems().add("Name");
@@ -74,7 +69,6 @@ public class Controller implements Initializable {
 		// iIP.getItems().addAll(hopList);
 		// iName.getItems().addAll(hopList);
 		// iTime.getItems().addAll(hopList);
-
 	}
 
 	public void handleStartButton(ActionEvent event) throws IOException {
@@ -92,10 +86,6 @@ public class Controller implements Initializable {
 			iIP.getItems().add(smallList.get(2));
 			iName.getItems().add(smallList.get(1));
 			iTime.getItems().add(smallList.get(3));
-			// iName.getItems().addAll(smallList);
-			// for(String s : smallList){
-			//
-			// }
 		}
 	}
 

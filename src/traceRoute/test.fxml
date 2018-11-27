@@ -12,7 +12,7 @@
     <cellValueFactory><PropertyValueFactory property="firstName"/></cellValueFactory>
 </TableColumn> -->
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="traceRoute.Controller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="traceRoute.Controller">
    <children>
       <ScrollPane layoutX="56.0" layoutY="119.0" prefHeight="486.0" prefWidth="681.0">
          <content>
@@ -28,7 +28,7 @@
       </ScrollPane>
       <Label layoutX="24.0" layoutY="36.0" text="IP Address / URL" />
       <TextField fx:id="textField" layoutX="142.0" layoutY="31.0" prefHeight="27.0" prefWidth="456.0" />
-      <Button fx:id="startButton" layoutX="620.0" layoutY="31.0" mnemonicParsing="false" onAction="#handleStartButton" prefWidth="65.0" text="Start" />
-      <Button fx:id="clearButton" layoutX="696.0" layoutY="31.0" mnemonicParsing="false" onAction="#handleClearButton" prefHeight="27.0" prefWidth="65.0" text="Clear" />
+      <Button fx:id="startButton" layoutX="620.0" layoutY="31.0" mnemonicParsing="false" onAction="#handleStartButton" prefWidth="65.0" style="-fx-background-color: #000;" text="Start" textFill="#f8f7f7" />
+      <Button fx:id="clearButton" layoutX="696.0" layoutY="31.0" mnemonicParsing="false" onAction="#handleClearButton" prefHeight="27.0" prefWidth="65.0" style="-fx-background-color: #000;" text="Clear" textFill="#fcf7f7" />
    </children>
 </AnchorPane>
