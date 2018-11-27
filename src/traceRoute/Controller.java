@@ -101,7 +101,6 @@ public class Controller implements Initializable {
 							ipLabel.setText("not define");
 						}
 					}
-
 				});
 			}
 		}
@@ -112,34 +111,17 @@ public class Controller implements Initializable {
 		for (ArrayList<String> smallList : bigList) {
 			listOfIP.add(smallList.get(2));
 			i++;
-			//			System.out.println(i+" Hop: " + smallList.get(0));
 			iHop.getItems().add(smallList.get(0));
 			iIP.getItems().add(smallList.get(2));
 			iName.getItems().add(smallList.get(1));
 			iTime.getItems().add(smallList.get(3));
 			if (smallList.get(3).contains("out")) {
-				//				series.getData().add(new XYChart.Data<String, Number>(smallList.get(0), 0));
-
 				series.getData().add(new XYChart.Data<String, Number>(i+"", 0));
 			} else {
 				double time = Double.parseDouble(smallList.get(3));
-				//				if(smallList.get(0).equals("")) {
-				//					if( j == (i - 2)) {
-				//						series.getData().add(new XYChart.Data<String, Number>((i-1)+"", time));
-				//					}else {
-				//						series.getData().add(new XYChart.Data<String, Number>((i-1)+"", time));
-				//					}
-				//					j = i - 1;
-				//				}else {
-				//					series.getData().add(new XYChart.Data<String, Number>(smallList.get(0), time));
-				//					i = Integer.parseInt(smallList.get(0));
-				//				}
 				series.getData().add(new XYChart.Data<String, Number>(i+"", time));
-
 			}
-			//			System.out.println(">>>"+series.getData().toString());
 		}
-
 	}
 
 	public void handleClearButton(ActionEvent event) {
@@ -149,7 +131,6 @@ public class Controller implements Initializable {
 		iName.getItems().clear();
 		iTime.getItems().clear();
 		hopList.clear();
-		//		series.getData().removeAll();
 		series.getData().clear();
 		lineChart.getData().clear();
 		ipLabel.setText("");

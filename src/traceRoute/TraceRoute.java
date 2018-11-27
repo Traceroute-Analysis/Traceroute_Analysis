@@ -171,12 +171,11 @@ public class TraceRoute {
 
 	public static String findAverage(String line) {
 		int indexOfMs, from = 0;
-		DecimalFormat deFormat = new DecimalFormat(".##");
 		double x = 0, y = 0, z = 0;
 		for(int i = 1 ; i <= 3 ; i++){
 			if(line.substring(from).contains(" ms")){
 				indexOfMs = line.substring(from).indexOf(" ms") + from;
-//				System.out.println(line.substring(indexOfMs-7, indexOfMs-1));
+				System.out.println(line.substring(indexOfMs-7, indexOfMs-1));
 
 				if(i == 1) x = Double.parseDouble( line.substring(indexOfMs-7, indexOfMs-1) );
 				else if(i == 2) y = Double.parseDouble( line.substring(indexOfMs-7, indexOfMs-1) ); 
@@ -185,7 +184,7 @@ public class TraceRoute {
 			}
 //			else System.out.println("no");
 		}
-		return deFormat.format(calAverage(x, y, z)) + "";
+		return String.format("%.2f", calAverage(x, y, z));
 	}
 
 	public static boolean isStar(String input) {
