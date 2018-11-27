@@ -49,21 +49,5 @@ public class Table {
 	public void setrTime(SimpleDoubleProperty rTime) {
 		this.rTime = rTime;
 	}
-
-//	public void setrHop(Integer r) {
-//		this.rHop.set(r);
-//	}
-//
-//	public void setrIP(String rIP) {
-//		this.rIP.set(rIP);;
-//	}
-//
-//	public void setrName(String rName) {
-//		this.rName.set(rName);;
-//	}
-//
-//	public void setrTime(double rTime) {
-//		this.rTime.set(rTime);;
-//	}
-//		
+	
 }

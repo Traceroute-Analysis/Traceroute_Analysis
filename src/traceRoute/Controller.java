@@ -65,6 +65,7 @@ public class Controller implements Initializable {
 		iTime.setMouseTransparent(true);
 		iTime.setFocusTraversable(false);
 		scrollPane.setVbarPolicy(ScrollBarPolicy.NEVER);
+		
 	}
 
 	private void loadData() {
@@ -75,7 +76,6 @@ public class Controller implements Initializable {
 	}
 
 	public void handleStartButton(ActionEvent event) throws IOException {
-
 		String input = textField.getText().trim();
 		System.out.println("start: " + input);
 		TraceRoute traceRoute = new TraceRoute();
@@ -152,10 +152,10 @@ public class Controller implements Initializable {
 		iIP.getItems().clear();
 		iName.getItems().clear();
 		iTime.getItems().clear();
-		iHop.getItems().add("Hop");
-		iIP.getItems().add("IP address");
-		iName.getItems().add("Name");
-		iTime.getItems().add("Avg.");
+		iHop.getItems().add("HOP");
+		iIP.getItems().add("IP ADDRESS");
+		iName.getItems().add("NAME");
+		iTime.getItems().add("AVERAGE RTT (ms)");
 		hopList.clear();
 		series.getData().removeAll();
 		lineChart.getData().clear();
