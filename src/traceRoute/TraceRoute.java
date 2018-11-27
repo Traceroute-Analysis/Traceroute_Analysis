@@ -160,10 +160,12 @@ public class TraceRoute {
 
 	public static String findIP(String line){
 		int indexOfStart, indexOfEnd;
+		String sum = "";
 		if(line.contains("(") && line.contains(")")){
 			indexOfStart = line.indexOf("(");
 			indexOfEnd = line.indexOf(")");
-			return line.substring(indexOfStart + 1, indexOfEnd);
+			sum = line.substring(indexOfStart + 1, indexOfEnd);
+			return sum;
 		} else return "";
 	}
 
