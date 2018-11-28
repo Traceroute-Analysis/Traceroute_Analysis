@@ -47,6 +47,8 @@ public class TraceRoute {
 		InetAddress inet = InetAddress.getByName(input);
 		System.out.println(isReachable(input));
 		BufferedReader in;
+		int count = 0;
+
 
 		ArrayList<ArrayList<String>> listOLists = new ArrayList<ArrayList<String>>();
 		try {
@@ -60,6 +62,9 @@ public class TraceRoute {
 				ArrayList<String> singleList = new ArrayList<String>();
 				
 				System.out.println(line);
+				if(line.contains("* * *") && count == 2){
+					return listOLists;
+				}
 				if(line.contains("* * *")) {
 					System.out.println("Hop = " + findHop(line));
 					singleList.add(findHop(line));
@@ -67,6 +72,7 @@ public class TraceRoute {
 					singleList.add("- run out of time -");
 					singleList.add("- run out of time -");
 					System.out.println("- run out of time -");
+					count++;
 				} else {
 					System.out.println("Hop = " + findHop(line));
 					System.out.println("IP = " + findIP(line));

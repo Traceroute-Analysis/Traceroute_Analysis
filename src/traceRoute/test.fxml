@@ -94,5 +94,6 @@
             <Font name="System Bold" size="15.0" />
          </font>
       </Label>
+      <AnchorPane layoutX="82.0" layoutY="628.0" prefHeight="68.0" prefWidth="870.0" style="-fx-background-color: white;" />
    </children>
 </AnchorPane>

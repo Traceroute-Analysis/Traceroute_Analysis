@@ -51,7 +51,7 @@ public class Controller implements Initializable {
 	ObservableList timeList = FXCollections.observableArrayList();
 	ArrayList<ArrayList<String>> listOLists = new ArrayList<ArrayList<String>>();
 	XYChart.Series<String, Number> series = new XYChart.Series<String, Number>();
-	ArrayList<String> listOfIP = new ArrayList<>();
+	ArrayList<String> listOfIP;
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -68,6 +68,9 @@ public class Controller implements Initializable {
 	}
 
 	public void handleStartButton(ActionEvent event) throws IOException {
+		
+		listOfIP = new ArrayList<>();
+		series.setName("sss");
 		String input = textField.getText().trim();
 		System.out.println("start: " + input);
 		TraceRoute traceRoute = new TraceRoute();
@@ -107,6 +110,7 @@ public class Controller implements Initializable {
 	}
 
 	public void updateData(ArrayList<ArrayList<String>> bigList) {
+		
 		int i = 0, j = 0;
 		for (ArrayList<String> smallList : bigList) {
 			listOfIP.add(smallList.get(2));
@@ -123,8 +127,7 @@ public class Controller implements Initializable {
 			}
 		}
 	}
-
-	public void handleClearButton(ActionEvent event) {
+	private void clear(){
 		textField.clear();
 		iHop.getItems().clear();
 		iIP.getItems().clear();
@@ -136,6 +139,9 @@ public class Controller implements Initializable {
 		ipLabel.setText("");
 		// IPList.removeAll(IPList);
 		System.out.println("clear");
+	}
+	public void handleClearButton(ActionEvent event) {
+		clear();
 
 	}
 }
