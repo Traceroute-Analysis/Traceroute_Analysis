@@ -10,8 +10,8 @@ The normal traceroute command is very hard to read because it is quite messy.
 5910546686 Pimwalun Witchawanitchanun
 
 ## Tools
-Java
-JavaFX
+- Java
+- JavaFX
 
 ## Our application
-![alt text](https://raw.githubusercontent.com/username/projectname/branch/path/to/img.png)
+![alt text](https://github.com/Traceroute-Analysis/Traceroute_Analysis/blob/master/application_pic.png)
